@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesion</title>
+</head>
+<body>
+    <div>Introduce tu nombre de usuario</div>
+    <input type="text" id="usuario">
+    <a href="#" id="entrar">Entrar</a>
+
+    <script>
+        const inputUsuario = document.getElementById('usuario');
+        const linkEntrar = document.getElementById('entrar');
+
+        linkEntrar.addEventListener('click', function(event) {
+            event.preventDefault();
+            const usuario = inputUsuario.value;
+            const url = 'chat.html?usuario=' + encodeURIComponent(usuario);
+            window.location.href = url;
+        });
+    </script>
+</body>
+</html>

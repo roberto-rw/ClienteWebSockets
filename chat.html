@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8" />
+   <title>WebSocket Test</title>
+</head>
+<body>
+   <div id="contenedorMensajes">
+      <h2 id="bienvenida" >WebSocket Test</h2>
+      <p class="p">Escribe tu mensaje: </p>
+      <input type="text" id="txtMsj" />
+      <button id="btnMensaje" onclick="enviarMensaje()">Enviar</button>
+      <select id="combo">
+         <option value="todos">TODOS</option>
+      </select>
+      <div id="output"></div>
+   </div>
+   
+   <form action="" id="form">
+      <p>Contacto</p>
+      <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+      <input type="email" name="email" id="email" placeholder="Email">
+      <input type="number" name="edad" id="edad" placeholder="Edad">
+      <button type="button" id="btnEntidad" onclick="enviarContacto()">Enviar</button>
+   </form>
+   <script src="script.js"></script>
+</body>
+</html>

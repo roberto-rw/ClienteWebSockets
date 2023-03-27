@@ -46,10 +46,10 @@ window.onload = function() {
         if (tipoMensaje == "listaUsuarios") {
             actualizarComboBox(datosMensaje)
         }else if(tipoMensaje == "mensaje"){
-            writeToScreen('<span style="color: blue;">' + datosMensaje+'</span>');
+            writeToScreen('<span>' + datosMensaje+'</span>');
         }else if(tipoMensaje == "contacto"){
-            //TODO: pintar la tabla en el html
-            console.log(datosMensaje)
+            llenarTablaContactos(datosMensaje);
+            console.log(datosMensaje);
         }
     }
                     
@@ -60,7 +60,7 @@ window.onload = function() {
               
 function enviarMensaje(){
     var txt = txtMensaje.value
-    writeToScreen("SENT: " + txt);
+    writeToScreen("Tu: " + txt);
 
     if(comboBoxClientes.value == "TODOS"){
         // console.log("TODOS ALB")
@@ -111,6 +111,7 @@ function enviarContacto(){
 
 function writeToScreen(message){
     var pre = document.createElement("p");
+    pre.classList.add("mensaje")
     pre.style.wordWrap = "break-word";
     pre.innerHTML = message;
     output.appendChild(pre);
@@ -134,3 +135,52 @@ function limpiarComboBox(){
     comboBoxClientes.appendChild(option); // Agrega la opción "TODOS" al select
 }
 
+function llenarTablaContactos(contacto){
+    const {nombre, email, edad} = contacto;
+
+    const formulario = document.querySelector("#form")
+
+    if(document.querySelector(".dato-edad")){
+        document.querySelector(".dato-nombre").textContent = nombre;
+        document.querySelector(".dato-email").textContent = email;
+        document.querySelector(".dato-edad").textContent = edad;
+        return;
+    }
+
+    const tablaContacto = document.createElement("table");
+    tablaContacto.classList.add("tabla-contacto");
+    const tablaHeader = document.createElement("thead")
+    const tablaHeaderRow = document.createElement("tr");
+    const dataHeader1 = document.createElement("th");
+    const dataHeader2 = document.createElement("th");
+    const dataHeader3 = document.createElement("th");
+    dataHeader1.textContent = "Nombre";
+    dataHeader2.textContent = "Email";
+    dataHeader3.textContent = "Edad";
+    tablaHeaderRow.appendChild(dataHeader1);
+    tablaHeaderRow.appendChild(dataHeader2);
+    tablaHeaderRow.appendChild(dataHeader3);
+    tablaHeader.appendChild(tablaHeaderRow);
+
+    const tablaBody = document.createElement("tbody");
+    const tablaBodyRow = document.createElement("tr");
+    const dataBody1 = document.createElement("td");
+    const dataBody2 = document.createElement("td");
+    const dataBody3 = document.createElement("td");
+
+    dataBody1.classList.add("dato-nombre");
+    dataBody2.classList.add("dato-email");
+    dataBody3.classList.add("dato-edad");
+    dataBody1.textContent = nombre;
+    dataBody2.textContent = email;
+    dataBody3.textContent = edad;
+    tablaBodyRow.appendChild(dataBody1);
+    tablaBodyRow.appendChild(dataBody2);
+    tablaBodyRow.appendChild(dataBody3);
+    tablaBody.appendChild(tablaBodyRow);
+
+    tablaContacto.appendChild(tablaHeader);
+    tablaContacto.appendChild(tablaBody);
+    formulario.parentNode.insertBefore(tablaContacto, formulario.nextSibling);
+
+}

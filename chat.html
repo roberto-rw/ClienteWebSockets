@@ -3,16 +3,23 @@
 <head>
    <meta charset="utf-8" />
    <title>WebSocket Test</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="./estilos.css">
 </head>
 <body>
    <div id="contenedorMensajes">
-      <h2 id="bienvenida" >WebSocket Test</h2>
-      <p class="p">Escribe tu mensaje: </p>
-      <input type="text" id="txtMsj" />
-      <button id="btnMensaje" onclick="enviarMensaje()">Enviar</button>
-      <select id="combo">
-         <option value="todos">TODOS</option>
-      </select>
+      <div class="enviarMensajes">
+         <h2 id="bienvenida" >WebSocket Test</h2>
+
+         <input placeholder="Escribe tu mensaje: " id="txtMsj" type="text" class="textInput">
+         <button id="btnMensaje" onclick="enviarMensaje()">Enviar</button>
+         <select id="combo">
+            <option value="todos">TODOS</option>
+         </select>
+      </div>
+      
       <div id="output"></div>
    </div>
    
